@@ -63,6 +63,11 @@ rm -rf ~/.config/FileHub
 
 ## 🛠️ Development
 
+### Prerequisites
+*   Node.js (v14+)
+*   NPM
+
+### Setup
 ```bash
 # Clone repository
 git clone https://github.com/aras/filehub.git
@@ -72,9 +77,26 @@ npm install
 
 # Run locally
 npm start
+```
 
-# Build for Linux
-npm run dist
+### 🌍 Multi-Platform Build
+
+To build the application for different operating systems:
+
+**🐧 Linux (.AppImage, .deb)**
+```bash
+npm run dist -- --linux
+```
+
+**🪟 Windows (.exe, .nsis)**
+```bash
+npm run dist -- --win
+```
+
+**🍎 macOS (.dmg)**
+```bash
+# Note: Building for macOS typically requires running on a Mac machine
+npm run dist -- --mac
 ```
 
 ## License
