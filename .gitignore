@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+package-lock.json
+npm-debug.log
+
+# Build Outputs
+dist/
+release/
+build/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Environment / Local Config
+.env
+.env.local
+
+# OS Generated
+Thumbs.db
+Desktop.ini

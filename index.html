@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Hub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="window-frame">
+        <!-- Linux Title Bar -->
+        <div class="title-bar">
+            <!-- Spacer to push title center/left if needed, or just let flex handle it -->
+            <div class="title-text" id="window-title" style="flex: 1; text-align: left;">File Hub</div>
+
+            <div class="window-controls mac-style-right">
+                <div class="traffic-btn yellow" id="min-btn"></div>
+                <div class="traffic-btn red" id="close-btn"></div>
+            </div>
+        </div>
+
+        <div class="main-container">
+
+            <!-- MAIN VIEW -->
+            <div id="main-view" class="view">
+                <div class="app-header">
+                    <h2>File Hub</h2>
+                    <div class="gear-btn" id="open-settings-btn">
+                        <span class="material-icons">settings</span>
+                    </div>
+                </div>
+
+                <div class="drop-area" id="dropzone">
+                    <div class="drop-inner">
+                        <span class="material-icons cloud-ico">cloud_queue</span>
+                        <p>Drag & Drop Files Here</p>
+                    </div>
+                </div>
+
+                <!-- Progress Section (Shared or specific to main?) -->
+                <div class="progress-section hidden" id="main-progress">
+                    <div class="progress-header">
+                        <span class="material-icons">description</span>
+                        <span id="progress-text-main">Sending to Email...</span>
+                        <div class="spinner-container">
+                            <span class="material-icons spin">sync</span>
+                        </div>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progress-bar-main"></div>
+                    </div>
+                </div>
+
+                <!-- SENT FILES LIST -->
+                <div class="sent-files-section" id="sent-files-section">
+                    <h3>Sent Recently</h3>
+                    <div class="sent-list" id="sent-list">
+                        <!-- Dynamic items -->
+                        <div class="empty-state">No files sent yet</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETTINGS VIEW -->
+            <div id="settings-view" class="view hidden">
+                <div class="app-header">
+                    <h2>Settings</h2>
+                    <div class="gear-btn" id="back-to-main-gear">
+                        <span class="material-icons">settings</span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="section">
+                    <h3>Gmail email</h3>
+                    <div class="email-row">
+                        <input type="email" id="email-input" placeholder="@gmail.com">
+                        <button class="pill-btn save-btn" id="save-settings-btn">Save</button>
+                    </div>
+                    <input type="password" id="password-input" placeholder="App Password" class="pass-input">
+                </div>
+
+                <div class="progress-section hidden" id="settings-progress">
+                    <div class="progress-header">
+                        <span class="material-icons">description</span>
+                        <span id="progress-text-settings">Sending to Email (65%)</span>
+                        <div class="spinner-container">
+                            <span class="material-icons spin">sync</span>
+                        </div>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progress-bar-settings"></div>
+                    </div>
+                    <p class="progress-footer">Files will sent upon drag & drop.<br>Max file size: 25MB.</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="section" style="text-align: center; margin-bottom: 20px;">
+                    <img src="assets/icon.png" style="width: 64px; height: 64px; margin-bottom: 10px;">
+                    <h3 style="margin-bottom: 0;">File Hub</h3>
+                    <p style="font-size: 11px; color: var(--text-muted);">v1.0.0</p>
+                </div>
+
+                <div class="section">
+                    <h3>General</h3>
+
+                    <div class="setting-item">
+                        <label style="font-weight: 500;">Appearance</label>
+                        <select id="theme-select" class="theme-select">
+                            <option value="system">System</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="label-group">
+                            <div class="custom-checkbox" id="autostart-cb">
+                                <span class="material-icons">check</span>
+                            </div>
+                            <label>Launch at Startup</label>
+                            <input type="checkbox" id="autostart-check" style="display:none">
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="label-group">
+                            <div class="custom-checkbox" id="notify-cb">
+                                <span class="material-icons">check</span>
+                            </div>
+                            <label>Show Notifications</label>
+                            <input type="checkbox" id="notify-check" style="display:none">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spacer to push content up if needed -->
+                <div style="flex: 1;"></div>
+            </div>
+
+        </div>
+
+        <!-- GLOBAL STATUS BAR -->
+        <div class="status-bar">
+            <div class="about-info">
+                <p>Version: 1.2.5</p>
+                <p>Developed by: Aras</p>
+            </div>
+            <button class="pill-btn close-btn" id="global-close-btn">Close</button>
+        </div>
+
+        <div id="toast" class="toast hidden">Notice</div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+
+</html>

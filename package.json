@@ -1,0 +1,46 @@
+{
+  "name": "file_hub",
+  "version": "1.0.0",
+  "description": "A simple file sharing hub",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "dist": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.aras.filehub",
+    "productName": "FileHub",
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility",
+      "icon": "assets/logo.png"
+    },
+    "files": [
+      "**/*",
+      "!dist/*",
+      "!**/*.ts"
+    ],
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "keywords": [],
+  "author": {
+    "name": "Aras",
+    "email": "aras@example.com"
+  },
+  "homepage": "https://github.com/aras/filehub",
+  "license": "ISC",
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "nodemailer": "^7.0.13"
+  },
+  "devDependencies": {
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0"
+  }
+}

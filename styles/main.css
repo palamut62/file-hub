@@ -1,0 +1,589 @@
+:root {
+    --window-bg: #E3E8FF;
+    /* Lavender-blue tint from image */
+    --text-main: #4a4a4f;
+    /* Softer Grey */
+    --text-muted: #515154;
+    --accent-btn: #7367F0;
+    /* Purple/pill button color */
+    --border-color: rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: transparent;
+    height: 100vh;
+    overflow: hidden;
+    color: var(--text-main);
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+    --window-bg: #1E1E24;
+    --text-main: #E0E0E0;
+    --text-muted: #A0A0A5;
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .window-frame {
+    background: var(--window-bg);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .title-bar {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .gear-btn {
+    color: #A0A0A5;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .gear-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .drop-area {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #444;
+}
+
+body.dark-mode .drop-inner p {
+    color: #E0E0E0;
+}
+
+body.dark-mode .cloud-ico {
+    color: #666;
+}
+
+body.dark-mode .sent-item {
+    background: rgba(255, 255, 255, 0.08);
+    /* Dark glass */
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .sent-item-name {
+    color: #E0E0E0;
+}
+
+body.dark-mode input,
+body.dark-mode select {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .pill-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .status-bar,
+body.dark-mode .settings-footer-row {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Theme Select */
+.theme-select {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #D1D1D6;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.window-frame {
+    background: var(--window-bg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Title Bar */
+.title-bar {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-app-region: drag;
+    padding: 0 0 0 16px;
+    background: transparent;
+}
+
+.title-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+/* Window Controls (Mac Style on Right) */
+.window-controls.mac-style-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 12px;
+    -webkit-app-region: no-drag;
+    height: 100%;
+}
+
+.traffic-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+.traffic-btn:hover {
+    opacity: 0.8;
+}
+
+.traffic-btn:active {
+    transform: scale(0.9);
+}
+
+.traffic-btn.yellow {
+    background: #FFBD2E;
+}
+
+.traffic-btn.red {
+    background: #FF5F56;
+}
+
+/* Dark mode tweaks handled by direct colors which work on dark too */
+
+/* Dark mode tweaks */
+body.dark-mode .control-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .control-btn.close-action:hover {
+    background: #e81123;
+}
+
+.green {
+    background: #28C840;
+}
+
+.title-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Main Container */
+.main-container {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sections */
+.section {
+    margin-bottom: 16px;
+    /* Reduced from 20px */
+}
+
+/* Header */
+.app-header {
+    margin-bottom: 16px;
+    /* Reduced from 20px */
+}
+
+/* Dropzone */
+.drop-area {
+    height: 120px;
+    /* Reduced slightly */
+}
+
+/* Dropzone - Sent list spacing */
+.sent-files-section {
+    margin-top: 10px;
+}
+
+/* Footer */
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.app-header h2 {
+    font-size: 16px;
+    /* Reduced from 22px */
+    font-weight: 600;
+    margin: 0;
+}
+
+.gear-btn {
+    background: transparent;
+    border: none;
+    padding: 4px;
+    display: flex;
+    color: #515154;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.gear-btn:hover {
+    opacity: 0.7;
+}
+
+.gear-btn .material-icons {
+    font-size: 20px;
+}
+
+/* Dropzone */
+.drop-area {
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px dashed #A5A5A9;
+    border-radius: 12px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.drop-inner {
+    text-align: center;
+}
+
+.cloud-ico {
+    font-size: 40px;
+    color: #737376;
+    margin-bottom: 4px;
+}
+
+.drop-inner p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1D1D1F;
+}
+
+.drop-inner {
+    text-align: center;
+}
+
+.cloud-ico {
+    font-size: 56px;
+    color: #737376;
+    margin-bottom: 8px;
+}
+
+.drop-inner p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1D1D1F;
+}
+
+/* Sections */
+.section {
+    margin-bottom: 20px;
+}
+
+.section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.email-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #D1D1D6;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    outline: none;
+}
+
+.pass-input {
+    width: 100%;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    margin: 16px 0;
+}
+
+/* Buttons */
+.pill-btn {
+    border-radius: 20px;
+    border: none;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.save-btn,
+.close-btn {
+    background: var(--accent-btn);
+    color: white;
+}
+
+.secondary {
+    background: rgba(255, 255, 255, 0.4);
+    color: #1D1D1F;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.light-btn {
+    background: rgba(255, 255, 255, 0.4);
+    color: #1D1D1F;
+}
+
+.icon-only {
+    width: 44px;
+    height: 38px;
+    padding: 0;
+}
+
+/* Progress */
+.progress-section {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+.progress-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.progress-track {
+    height: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #34C759;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-footer {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.spin {
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Setting Item */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.label-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #7367F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.custom-checkbox.checked {
+    background: #7367F0;
+}
+
+.custom-checkbox span {
+    font-size: 14px;
+    color: white;
+    display: none;
+}
+
+.custom-checkbox.checked span {
+    display: block;
+}
+
+.dot-check-icon {
+    color: #7367F0;
+    display: none;
+}
+
+.dot-check-icon.checked {
+    display: block;
+}
+
+/* Sent Files Section */
+.sent-files-section {
+    margin-top: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* Important for flex child with overflow */
+}
+
+.sent-files-section h3 {
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-left: 4px;
+}
+
+.sent-list {
+    flex: 1;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 8px;
+}
+
+.sent-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.sent-item:last-child {
+    margin-bottom: 0;
+}
+
+.sent-item-icon {
+    color: #7367F0;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.sent-item-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.sent-item-name {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sent-item-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* Global Status Bar */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    /* Keep slight tint */
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.about-info {
+    text-align: left;
+}
+
+.about-info p {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.about-info p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+.hidden {
+    display: none !important;
+}
+
+/* Toast */
+.toast {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+}
