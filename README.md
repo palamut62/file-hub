@@ -6,6 +6,11 @@
 
 File Hub is a modern, minimalist desktop application designed to treat your email as a personal file storage cloud. Simply drag and drop files to instantly send them to your own email address.
 
+<p align="center">
+  <img src="assets/logo1.png" alt="File Hub Screenshot" width="800">
+</p>
+
+
 ## ✨ Features
 
 *   **Drag & Drop:** Effortlessly send files by dragging them onto the interface.
